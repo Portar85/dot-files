@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/PB/Documents/appspotr/src/appspotr-cms/modules/mqr'
 let g:netrw_dirhist_2='/Users/PB/dot-files'
 let g:netrw_dirhist_3='/Users/PB/.vim'
+let g:netrw_dirhist_4='/Users/PB/dot-files/dot-files'
