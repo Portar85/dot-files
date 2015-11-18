@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'fatih/vim-go'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'Valloric/YouCompleteMe'
 
 " Plugin 'Valloric/YouCompleteMe'
 
@@ -88,12 +89,31 @@ noremap <Down>     <NOP>
 noremap <Left>     <NOP>
 noremap <Right>    <NOP>
 
+let mapleader = "\<Space>"
 
 set noscrollbind
 set t_Co=256
 set background=dark
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+colorscheme industry
 
 autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au BufNewFile,BufRead *.coffee set filetype=coffee
+
+function! DisplayColorSchemes()
+   let currDir = getcwd()
+   exec "cd $VIMRUNTIME/colors"
+   for myCol in split(glob("*"), '\n')
+      if myCol =~ '\.vim'
+         let mycol = substitute(myCol, '\.vim', '', '')
+         exec "colorscheme " . mycol
+         exec "redraw!"
+         echo "colorscheme = ". myCol
+         sleep 2
+      endif
+   endfor
+   exec "cd " . currDir
+endfunction
+
+
