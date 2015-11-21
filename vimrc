@@ -100,6 +100,7 @@ colorscheme industry
 
 autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au BufNewFile,BufRead *.coffee set filetype=coffee
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 function! DisplayColorSchemes()
    let currDir = getcwd()
