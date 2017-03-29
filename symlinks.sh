@@ -24,6 +24,10 @@ echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
+    if [ ! -f $dir/$file ]; then
+      echo "File $file didn't exist in dot-files, copying existing file from home folder"
+      cp ~/.$file $dir/$file
+    fi
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
