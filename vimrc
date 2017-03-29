@@ -16,6 +16,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'fatih/vim-go'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 
 " Plugin 'Valloric/YouCompleteMe'
 
@@ -77,6 +78,11 @@ set pastetoggle=\\o
 set nobackup
 set noswapfile
 
+" Make copys etc available to clipboard
+if $TMUX == ''
+  set clipboard=unnamed
+endif
+
 " set listchars=nbsp:.,extends:#,tab:▸\,eol:
 
 " Ignore arrows, because Henrik said it would make me a good person, I doubt it
@@ -90,13 +96,14 @@ noremap <Left>     <NOP>
 noremap <Right>    <NOP>
 
 let mapleader = "\<Space>"
+let coffee_lint_options = '-f ~/coffeelint.json'
 
 set noscrollbind
 set t_Co=256
 set background=dark
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-colorscheme industry
+colorscheme 256-grayvim
 
 autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au BufNewFile,BufRead *.coffee set filetype=coffee
