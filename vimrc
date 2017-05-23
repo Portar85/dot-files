@@ -103,11 +103,14 @@ set t_Co=256
 set background=dark
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-colorscheme 256-grayvim
+colorscheme sol-term
 
 autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2
 au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+augroup filetype
+  au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
 
 function! DisplayColorSchemes()
    let currDir = getcwd()
